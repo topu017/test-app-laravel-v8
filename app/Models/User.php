@@ -19,6 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone_or_mobile',
+        'username',
         'password',
     ];
 
@@ -40,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function departments()
+    {
+        return $this->hasMany('App\Models\Department');
+    }
 }
