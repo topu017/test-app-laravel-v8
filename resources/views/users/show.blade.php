@@ -26,8 +26,8 @@
                     <td><h4>{{ $user->position }}</h4></td>
                     <td><img width="100px" height="100px" src="{{ Storage::url($user->user_photo) }}" alt=""></td>
                     <td><h4>{{ $user->role }}</h4></td>
-                    <td><h4>{{ $user->created_at }}</h4></td>
-                    <td><h4>{{ $user->updated_at }}</h4></td>
+                    <td><h4>{{ $user->created_at->format('d.m.Y, H:i:s') }}</h4></td>
+                    <td><h4>{{ $user->updated_at->format('d.m.Y, H:i:s') }}</h4></td>
 
                 </tr>
         </table>

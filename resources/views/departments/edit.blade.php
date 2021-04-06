@@ -30,14 +30,14 @@
             <div class="form_edit_div row">
                 <label class="edit_form_label col-sm-2 col-form-label" for="user_id">User ID:</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="user_id" placeholder="Enter User ID" size="40" value="{{ $department->user_id }}" required>
+                    <input class="form-control" type="text" name="user_id" placeholder="Enter User ID" size="40" value="{{ $department->user_id }}" readonly="readonly">
                 </div>
             </div>
             </br></br>
             <div class="form_edit_div row">
                 <label class="edit_form_label col-sm-2 col-form-label" for="department_name">Department Name:</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="department_name" placeholder="Enter Department Name" size="40" value="{{ $department->department_name }}" required>
+                    <input class="form-control" type="text" name="department_name" placeholder="Enter Department Name" size="40" value="{{ $department->department_name }}" readonly="readonly">
                 </div>
             </div>
             </br></br>

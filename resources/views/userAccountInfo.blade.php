@@ -38,7 +38,7 @@
                     </td>
                 </tr>
         </table>
-        <a class="btn btn-inverse button_back pull-right" href="{{ route('home') }}">Back</a>
+        <a class="btn btn-inverse button_back pull-right" href="{{ url()->previous() }}">Back</a>
     </div>
 </div>
 

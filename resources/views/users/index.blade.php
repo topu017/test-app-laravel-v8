@@ -32,16 +32,18 @@
                 <td><h4>{{ $user->position }}</h4></td>
                 <td><img width="100px" height="100px" src="{{ Storage::url($user->user_photo) }}" alt=""></td>
                 <td><h4>{{ $user->role }}</h4></td>
-                <td><h4>{{ $user->created_at }}</h4></td>
-                <td><h4>{{ $user->updated_at }}</h4></td>
+                <td><h4>{{ $user->created_at->format('d.m.Y, H:i:s') }}</h4></td>
+                <td><h4>{{ $user->updated_at->format('d.m.Y, H:i:s') }}</h4></td>
                 <td>
                     <a class="btn btn-info" href="{{ route('showUserSingleData', ['id' => $user->id]) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('users.edit', ['id' => $user->id]) }}">Edit</a>
+                    @if(Auth::user()->role == 'admin')
                     <form action="{{ route('destroyUser', ['id' => $user->id]) }}" method="post">
                         {{ method_field('DELETE') }}
                         @csrf
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

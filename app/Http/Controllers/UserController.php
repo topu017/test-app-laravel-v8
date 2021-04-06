@@ -11,10 +11,6 @@ use Auth;
 
 class UserController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('admin');
-//    }
 
     public function index()
     {
@@ -84,9 +80,11 @@ class UserController extends Controller
             $user->user_photo = $request->user_photo->store('public/images');
         }
         $user->role = $request->role;
-        $nonHashedPass =  $request->password;
-        $hashedPass = Hash::make($nonHashedPass);
-        $user->password = $hashedPass;
+        if(!empty($request->input('password'))) {
+            $nonHashedPass = $request->password;
+            $hashedPass = Hash::make($nonHashedPass);
+            $user->password = $hashedPass;
+        }
 
         $user->update();
         return redirect()->back()->with('message', 'Data updated in database successfully');

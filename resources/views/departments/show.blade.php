@@ -18,8 +18,8 @@
                     <td><h3>{{ $department->user_id }}</h3></td>
                     <td><h3>{{ $department->department_name }}</h3></td>
                     <td><h3>{{ $department->department_position }}</h3></td>
-                    <td><h4>{{ $department->created_at }}</h4></td>
-                    <td><h4>{{ $department->updated_at }}</h4></td>
+                    <td><h4>{{ $department->created_at->format('d.m.Y, H:i:s') }}</h4></td>
+                    <td><h4>{{ $department->updated_at->format('d.m.Y, H:i:s') }}</h4></td>
                 </tr>
         </table>
         <a class="btn btn-inverse button_back pull-right" href="{{ route('departments.index') }}">Back</a>

@@ -24,16 +24,19 @@
                 <td><h3>{{ $department->user_id }}</h3></td>
                 <td><h3>{{ $department->department_name }}</h3></td>
                 <td><h3>{{ $department->department_position }}</h3></td>
-                <td><h4>{{ $department->created_at }}</h4></td>
-                <td><h4>{{ $department->updated_at }}</h4></td>
+                <td><h4>{{ $department->created_at->format('d.m.Y, H:i:s') }}</h4></td>
+                <td><h4>{{ $department->updated_at->format('d.m.Y, H:i:s') }}</h4></td>
                 <td>
                     <a class="btn btn-info" href="{{ route('showDepartmentSingleData', ['id' => $department->id]) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('departments.edit', ['id' => $department->id]) }}">Edit</a>
+                    @if(Auth::user()->role == 'admin')
                     <form action="{{ route('destroyDepartment', ['id' => $department->id]) }}" method="post">
                         {{ method_field('DELETE') }}
                         @csrf
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                    @endif
+
                 </td>
             </tr>
         @endforeach

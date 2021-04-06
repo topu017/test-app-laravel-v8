@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Department;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function admin()
+    {
+        return view('admin');
+    }
+    public function manager()
+    {
+        return view('manager');
     }
 
 
@@ -54,5 +63,12 @@ class HomeController extends Controller
         $user->update();
 
         return redirect()->back()->with('message', 'Your photo has been saved successfully');
+    }
+
+    public function showDepartment(Request $request, User $user, $id)
+    {
+        $user = User::find($id);
+        $departments = Department::all()->where('user_id', '=', $user->id);
+        return view('showDepartment')->with('departments', $departments);
     }
 }
